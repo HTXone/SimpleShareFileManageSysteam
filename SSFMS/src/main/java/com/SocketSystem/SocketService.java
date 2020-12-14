@@ -35,12 +35,16 @@ public class SocketService {
             while(true) {
                 Socket client = SERVER.accept();
 
-                ChatSocket CS= new ChatSocket(client);
+                //ChatSocket CS= new ChatSocket(client);
 
-                pool.execute(CS);
+               // pool.execute(CS);
             }
         }catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void GetFile(){
+
     }
 }
