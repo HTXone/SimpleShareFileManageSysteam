@@ -1,20 +1,22 @@
 package com.SocketSystem;
 
+import java.io.*;
 import java.net.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SocketService {
+public class FileService {
+
     static int PORT = 4001;					//信息服务器端口
     static ServerSocket SERVER = null;		//服务器嵌套字
     static ExecutorService pool = null;		//线程池
 
 
-    SocketService(int port) {
+    FileService(int port) {
         this.PORT = port;
     }
 
-    SocketService(){
+    FileService(){
         this(4001);
     }
 
@@ -34,17 +36,12 @@ public class SocketService {
         try {
             while(true) {
                 Socket client = SERVER.accept();
-
-                //ChatSocket CS= new ChatSocket(client);
-
-               // pool.execute(CS);
+                SocketClient SC = new SocketClient();
+                FileSocket FS= new FileSocket(SC);
+                pool.execute(SC);
             }
         }catch(Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void GetFile(){
-        
     }
 }

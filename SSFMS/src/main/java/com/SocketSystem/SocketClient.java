@@ -1,5 +1,7 @@
 package com.SocketSystem;
 
+import com.unit.CallBack;
+
 import javax.swing.*;
 import java.net.*;
 import java.io.*;
@@ -7,13 +9,21 @@ import java.awt.*;
 import java.lang.*;
 import java.util.*;
 
-
-public class SocketClient implements Runnable{
+public class SocketClient implements Runnable, CallBack {
     private Socket client;
     private String hostName;
     private int port;
     private DataInputStream DIS = null;
     private DataOutputStream DOS = null;
+    private boolean IsService=false;
+
+    public boolean isService() {
+        return IsService;
+    }
+
+    public void setService(boolean service) {
+        IsService = service;
+    }
 
     SocketClient(){
 
@@ -99,13 +109,45 @@ public class SocketClient implements Runnable{
     }
 
     //上传文件
-    public void UpdateFile(){
+    public void UpdateFile(String FileName){
+        try {
+            FileSocket FS = new FileSocket(this, hostName, port + 1);
+            Socket client = new Socket(hostName, port+1);
+            FS.FileSend(FileName,client);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    public void UpdateFile(String FileName,Socket client){
+        try {
+            FileSocket FS = new FileSocket(this, hostName, port + 1);
+            //Socket client = new Socket(hostName, port+1);
+            FS.FileSend(FileName,client);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     //下载文件
-    public void DownloadFile(){
+    public void DownloadFile(String FileName){
+        try {
+            FileSocket FS = new FileSocket(this, hostName, port + 1);
+            Socket client = new Socket(hostName, port+1);
+            FS.FileGet(FileName,client);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    public void DownloadFile(String FileName,Socket client){
+        try {
+            FileSocket FS = new FileSocket(this, hostName, port + 1);
+            //Socket client = new Socket(hostName, port+1);
+            FS.FileGet(FileName,client);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     //关闭
@@ -128,6 +170,16 @@ public class SocketClient implements Runnable{
 
     @Override
     public void run() {
+        while(true){
+            String cmd = GetCmds();
+        }
+    }
+
+    /**
+     * 回调函数
+     */
+    @Override
+    public void CallBack() {
 
     }
 }
