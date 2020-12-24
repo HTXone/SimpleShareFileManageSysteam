@@ -36,7 +36,7 @@ public class FileSystem {
 
     public boolean CreateNewDir(String DirName){
         try{
-            File FD = new File(NowPath+"\\"+DirName+"\\");
+            File FD = new File(DirName);
             return FD.mkdir();
         }catch (Exception ioe){
             ioe.printStackTrace();
@@ -97,9 +97,27 @@ public class FileSystem {
 
     public boolean FileDelete(String FileName){
         try{
-            File file = new File(NowPath, FileName);
-            return file.delete();
+            File ofile = new File(FileName);
+            boolean a = ofile.delete();
+            System.out.println(a);
+            while (!a){
+                System.gc();
+                a = ofile.delete();
+            }
+            return a;
         }catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean FileRename(String Path,String FileName,String NewName){
+        try{
+            File file = new File(Path+FileName);
+            File file2 = new File(Path+NewName);
+            file.renameTo(file2);
+            return true;
+        }catch (Exception e){
             e.printStackTrace();
             return false;
         }
@@ -110,18 +128,20 @@ public class FileSystem {
      * @param FileName
      * @return
      */
-    public String GZipFile(String FileName) {
+    public boolean GZipFile(String Path,String FileName) {
         FileInputStream FIS;
         BufferedOutputStream BOS;
         FileOutputStream FOS;
         BufferedInputStream BIS;
 
         try {
-            FIS = new FileInputStream(new File(FileName));
+            File ofile = new File(Path+FileName);
+            FIS = new FileInputStream(ofile);
             //ZipEntry ZE = new ZipEntry()
             byte[] bData = new byte[1024*10];
             String oldFileName = FileName+".gz";
-            BOS = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(oldFileName)));
+            File nfile = new File(Path+oldFileName);
+            BOS = new BufferedOutputStream(new GZIPOutputStream(new FileOutputStream(nfile)));
             int length;
             while((length = FIS.read(bData, 0, bData.length))!=-1) {
                 BOS.write(bData, 0, bData.length);
@@ -129,12 +149,20 @@ public class FileSystem {
             }
             BOS.close();
             FIS.close();
-            return (oldFileName);
+            boolean a = ofile.delete();
+            System.out.println(a);
+            while (!a){
+                System.gc();
+                a = ofile.delete();
+            }
+            ofile = null;
+            nfile = null;
+            return true;
         }catch(Exception ie) {
             System.out.println("error");
             System.err.println(ie);
             ie.printStackTrace();
-            return null;
+            return false;
         }
     }
 
@@ -143,22 +171,15 @@ public class FileSystem {
      * @param FileName1
      * @return
      */
-    public boolean GZtoFile(String FileName1) {
+    public boolean GZtoFile(String Path,String FileName1) {
 
         try {
-            String[] strs = FileName1.split("\\.");
-
-            if(!strs[-1].equals("gz")){
-                return false;
-            }
-
+            String[] strs = FileName1.split("\\.gz");
             String FileName2 = strs[0];
-            for(int i = 1;i<strs.length-1;i++){
-                FileName2+="."+strs[i];
-            }
-
-            BufferedInputStream BIS = new BufferedInputStream(new GZIPInputStream(new FileInputStream(FileName1)));
-            BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream(FileName2));
+            File ofile = new File(Path+FileName1);
+            File nfile = new File(Path+FileName2);
+            BufferedInputStream BIS = new BufferedInputStream(new GZIPInputStream(new FileInputStream(ofile)));
+            BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream(nfile));
             byte[] bData = new byte[1024*10];
             int length;
             while((length = BIS.read(bData, 0, bData.length))!=-1) {
@@ -169,6 +190,14 @@ public class FileSystem {
             }
             BIS.close();
             BOS.close();
+            boolean a = ofile.delete();
+            System.out.println(a);
+            while (!a){
+                System.gc();
+                a = ofile.delete();
+            }
+            ofile = null;
+            nfile = null;
             return true;
 
         }catch(Exception e) {
@@ -186,13 +215,15 @@ public class FileSystem {
      * @param PWD
      * @return
      */
-    public boolean Encoding(String FileName,String PWD){
+    public boolean Encoding(String FileName,String Path,String PWD){
         try{
             String FileName2 = FileName+"__d";
-            InputStream in = new FileInputStream(FileName);
+            File ofile = new File(Path+FileName);
+            File nfile = new File(Path+FileName2);
+            InputStream in = new FileInputStream(ofile);
             in = DESIn(in,PWD);
             BufferedInputStream BIS = new BufferedInputStream(in);
-            BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream(FileName2));
+            BufferedOutputStream BOS = new BufferedOutputStream(new FileOutputStream(nfile));
             byte[] bData = new byte[1024*10];
             int length;
             while((length = BIS.read(bData, 0, bData.length))!=-1) {
@@ -203,6 +234,14 @@ public class FileSystem {
             }
             BIS.close();
             BOS.close();
+            boolean a = ofile.delete();
+            System.out.println(a);
+            while (!a){
+                System.gc();
+                a = ofile.delete();
+            }
+            ofile = null;
+            nfile = null;
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -216,11 +255,13 @@ public class FileSystem {
      * @param PWD
      * @return
      */
-    public boolean Decoding(String FileName,String PWD){
+    public boolean Decoding(String FileName,String Path,String PWD){
         try{
             String FileName2 = FileName.split("__d")[0];
-            InputStream in = new FileInputStream(FileName);
-            OutputStream out = new FileOutputStream(FileName2);
+            File ofile = new File(Path+FileName);
+            File nfile = new File(Path+FileName2);
+            InputStream in = new FileInputStream(ofile);
+            OutputStream out = new FileOutputStream(nfile);
             out = DESOut(out,PWD);
             BufferedInputStream BIS = new BufferedInputStream(in);
             BufferedOutputStream BOS = new BufferedOutputStream(out);
@@ -234,6 +275,14 @@ public class FileSystem {
             }
             BIS.close();
             BOS.close();
+            boolean a = ofile.delete();
+            System.out.println(a);
+            while (!a){
+                System.gc();
+                a = ofile.delete();
+            }
+            ofile = null;
+            nfile = null;
             return true;
         }catch (Exception e){
             e.printStackTrace();

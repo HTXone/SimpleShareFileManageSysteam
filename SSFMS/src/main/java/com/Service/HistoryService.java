@@ -6,14 +6,25 @@ import java.util.List;
 
 public interface HistoryService {
 
-    boolean AddNewHistory();
+    boolean AddNewHistory(long Uid,int Fid);
 
-    History SearchHistory();
+    boolean AddNewHistory(long Uid,int Fid,int mood);
 
-    List<History> SearchHistoryByUid();
+    History SearchHistory(int Hid);
 
-    List<History> SearchHistoryByFileName();
+    List<History> SearchHistoryByUid(long Uid);
 
-    boolean HistoryDelete();
+    List<History> SearchHistoryByFileNameU(String FileName,String Uid,int Did);
+
+    List<History> SearchHistoryByDid(int Did);
+
+    List<History> SearchHistoryByFileNameD(String FileName,int Did);
+
+    List<History> SearchHistoryByUName(String UserName,int Did);
+
+
+    boolean HistoryDelete(int Hid);
+
+    public boolean AddNewHistory(long Uid, String FName, int mood);
 
 }

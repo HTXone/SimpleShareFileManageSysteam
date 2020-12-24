@@ -2,12 +2,39 @@ package com.entity;
 
 public class History {
     int Hid;
-    int Uid;
-    int FileName;
+    long Uid;
+    int Fid;
+    String FileName;
     String Time;
-    int Mood;
+    int Mood;           //1新建，2下载，3删除，4更新，5加密，6解密,7压缩,8解压
+    int Did;
+    String UserName;
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public int getDid() {
+        return Did;
+    }
+
+    public void setDid(int did) {
+        Did = did;
+    }
 
     public History() {
+    }
+
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String fileName) {
+        FileName = fileName;
     }
 
     public int getHid() {
@@ -18,20 +45,20 @@ public class History {
         Hid = hid;
     }
 
-    public int getUid() {
+    public long getUid() {
         return Uid;
     }
 
-    public void setUid(int uid) {
+    public void setUid(long uid) {
         Uid = uid;
     }
 
-    public int getFileName() {
-        return FileName;
+    public int getFid() {
+        return Fid;
     }
 
-    public void setFileName(int fileName) {
-        FileName = fileName;
+    public void setFid(int fid) {
+        Fid = fid;
     }
 
     public String getTime() {
@@ -55,7 +82,8 @@ public class History {
         return "History{" +
                 "Hid=" + Hid +
                 ", Uid=" + Uid +
-                ", FileName=" + FileName +
+                ", Fid=" + Fid +
+                ", FileName='" + FileName + '\'' +
                 ", Time='" + Time + '\'' +
                 ", Mood=" + Mood +
                 '}';

@@ -22,21 +22,21 @@
     </typeAliases>
 
 
-<!--    <environments default="asql" >-->
-<!--        <environment id="asql" >-->
-<!--            &lt;!&ndash;配置事务类型&ndash;&gt;-->
-<!--            <transactionManager type="JDBC"></transactionManager>-->
-<!--            &lt;!&ndash;配置数据源（连接池）&ndash;&gt;-->
-<!--            <dataSource type="POOLED">-->
-<!--                &lt;!&ndash;配置数据库4个基本信息&ndash;&gt;-->
-<!--                &lt;!&ndash;连接数据库信息 用于创建Connection对象&ndash;&gt;-->
-<!--                <property name="driver" value="${jdbc.driver}" />-->
-<!--                <property name="url" value="${jdbc.url}" />-->
-<!--                <property name="username" value="${jdbc.userName}" />-->
-<!--                <property name="password" value="${jdbc.PWD}" />-->
-<!--            </dataSource>-->
-<!--        </environment>-->
-<!--    </environments>-->
+    <environments default="asql" >
+        <environment id="asql" >
+            <!--配置事务类型-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--配置数据源（连接池）-->
+            <dataSource type="POOLED">
+                <!--配置数据库4个基本信息-->
+                <!--连接数据库信息 用于创建Connection对象-->
+                <property name="driver" value="${jdbc.driver}" />
+                <property name="url" value="${jdbc.url}" />
+                <property name="username" value="${jdbc.userName}" />
+                <property name="password" value="${jdbc.PWD}" />
+            </dataSource>
+        </environment>
+    </environments>
     <mappers>
         <!--Package标签用于指定dao接口所在的包 当指定完成后不需要写mapper以及resource或class-->
         <package name = "com.Mapper"/>

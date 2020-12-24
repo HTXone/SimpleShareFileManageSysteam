@@ -1,21 +1,21 @@
 package com.entity;
 
 public class User {
-    int UserId;
+    long UserId;
     String PWD;
     String Name;
     String NowIP;
     int Number;
 
-    User(){
+    public User(){
 
     }
 
-    public int getUserId() {
+    public long getUserId() {
         return UserId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         UserId = userId;
     }
 

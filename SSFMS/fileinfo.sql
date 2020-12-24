@@ -1,0 +1,14 @@
+INSERT INTO `fileinfo` VALUES ('AFFF', 27583, 'AAA', '20-12-20', 200, 1, 0, '', 8685);
+INSERT INTO `fileinfo` VALUES ('CCCCCCC', NULL, 'CCCCCCCC', '20-12-20', 100, 0, 0, NULL, 8688);
+INSERT INTO `fileinfo` VALUES ('heuout.jpg', 440840, 'D:\\Data\\SSFMS\\ROOT\\AAAAAAAA\\', '20-12-21', 174765, 0, 0, '', 174319);
+INSERT INTO `fileinfo` VALUES ('pic.jpg', NULL, 'D:\\Data\\SSFMS\\ROOT\\CCCCCCC\\', '20-12-21', 398270, 0, 0, '', 363305);
+INSERT INTO `fileinfo` VALUES ('Why programmers.pptx', 440840, 'D:\\Data\\SSFMS\\ROOT\\AAAAAAAA\\', '20-12-21', 28818, 0, 0, '', 508385);
+INSERT INTO `fileinfo` VALUES ('222.py', NULL, 'D:\\Data\\SSFMS\\ROOT\\CCCCCCC\\', '20-12-21', 0, 0, 0, '', 576884);
+INSERT INTO `fileinfo` VALUES ('huaianout.jpg', NULL, 'D:\\Data\\SSFMS\\ROOT\\CCCCCCC\\', '20-12-22', 261877, 0, 0, '', 610278);
+INSERT INTO `fileinfo` VALUES ('P1605-search.cpp', 942542, 'D:\\Data\\SSFMS\\ROOT\\XXXXXXXX\\', '20-12-24', 1539, 0, 0, '', 701824);
+INSERT INTO `fileinfo` VALUES ('G1`61{~(I(~)QY]TZE(D[XR.png', NULL, 'D:\\Data\\SSFMS\\ROOT\\CCCCCCC\\', '20-12-21', 0, 0, 0, '', 707326);
+INSERT INTO `fileinfo` VALUES ('222.py', 942542, 'D:\\Data\\SSFMS\\ROOT\\XXXXXXXX\\', '20-12-24', 1441, 0, 0, '', 714479);
+INSERT INTO `fileinfo` VALUES ('1.tmp', NULL, 'D:\\Data\\SSFMS\\ROOT\\CCCCCCC\\', '20-12-21', 0, 0, 0, '', 756410);
+INSERT INTO `fileinfo` VALUES ('p1605-search(1).cpp', 745808, 'D:\\Data\\SSFMS\\ROOT\\TTTTTTTT\\', '20-12-23', 1610, 0, 0, '', 771057);
+INSERT INTO `fileinfo` VALUES ('hit02.png', 745808, 'D:\\Data\\SSFMS\\ROOT\\TTTTTTTT\\', '20-12-24', 2007103, 0, 0, '', 929242);
+INSERT INTO `fileinfo` VALUES ('SSVEP2.doc', 745808, 'D:\\Data\\SSFMS\\ROOT\\TTTTTTTT\\', '20-12-23', 57344, 0, 0, '', 964402);

@@ -5,12 +5,21 @@ public class SFile {
     String FileName;
     String Path;
     String Time;
-    int Size;
-    boolean IsEnc;
-    boolean ISLock;
-    String PWD;
+    long Size;
+    int IsEnc = 0;
+    int IsLock = 0;
+    String PWD = "";
+    int Fid;
 
     public SFile() {
+    }
+
+    public int getFid() {
+        return Fid;
+    }
+
+    public void setFid(int fid) {
+        Fid = fid;
     }
 
     public int getDirId() {
@@ -45,28 +54,28 @@ public class SFile {
         Time = time;
     }
 
-    public int getSize() {
+    public long getSize() {
         return Size;
     }
 
-    public void setSize(int size) {
+    public void setSize(long size) {
         Size = size;
     }
 
-    public boolean isEnc() {
+    public int getIsEnc() {
         return IsEnc;
     }
 
     public void setEnc(boolean enc) {
-        IsEnc = enc;
+        IsEnc = enc?1:0;
     }
 
-    public boolean isISLock() {
-        return ISLock;
+    public int getIsLock() {
+        return IsLock;
     }
 
-    public void setISLock(boolean ISLock) {
-        this.ISLock = ISLock;
+    public void setIsLock(boolean ISLock) {
+        this.IsLock = ISLock?1:0;
     }
 
     public String getPWD() {
@@ -77,6 +86,11 @@ public class SFile {
         this.PWD = PWD;
     }
 
+    public String getAllName(){
+        return this.Path+this.FileName;
+    }
+
+
     @Override
     public String toString() {
         return "SFile{" +
@@ -86,7 +100,7 @@ public class SFile {
                 ", Time='" + Time + '\'' +
                 ", Size=" + Size +
                 ", IsEnc=" + IsEnc +
-                ", ISLock=" + ISLock +
+                ", ISLock=" + IsLock +
                 ", PWD='" + PWD + '\'' +
                 '}';
     }
